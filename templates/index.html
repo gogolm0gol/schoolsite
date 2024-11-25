@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- Hero Section-->
+<section class="hero">
+    <div class="hero-content">
+        <h1>Ніколи не </br> пізно вчитись!</h1>
+        <p>Вас вітає Овруцький ліцей №1 </br>
+            Овруцької міської ради</p>
+        <a href="{{ url_for('aboutus') }}" class="btn-about">Про нас</a>
+        <img class="arrow" src="static/images/arrow.png">
+    </div>
+</section>
+<!-- News Section -->
+<section class="news">
+    <div class="more">
+        <h2>Новини</h2>
+        <a href="{{ url_for('news') }}" class="button-more">Більше</a>
+        <img src="static/images/arrowwhite.png" class="arrow_news">
+    </div>
+    <a id="prev-button" class="carousel-button"><img src="static/images/whiteleft.png"></a>
+    <div class="news-carousel">
+        <div class="container_news" id="news-container">
+            {% for news in news_items %}
+            <div class="image-card">
+                <img src="{{ news.image }}" alt="{{ news.title }}">
+                <p class="news_title">{{ news.title }}</p>
+                <a href="/news/{{ news.slug }}" class="button_news">{{ news.button_text }}</a>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a id="next-button" class="carousel-button"><img src="static/images/whiteright.png"></a>
+    </div>
+</section>
+
+<!-- Teachers Section -->
+<section class="teachers">
+    <a class="button-next button-left"><img src="static/images/buttonleft.png"></a>
+
+    <div class="teachers-container">
+        <div class="teachers-header">
+            <h2>Наші Вчителі</h2>
+            <a href="{{ url_for('teachers') }}" class="button-more-teacher">Більше</a>
+            <img src="static/images/arrowblue.png" class="arrow_teacher">
+        </div>
+        <!-- Decorative elements -->
+        <img src="static/images/leaf.png" alt="Leaf" class="decorative-element leaf-1">
+        <img src="static/images/leaf2.png" alt="Leaf" class="decorative-element leaf-2">
+        <img src="static/images/leaf3.png" alt="Leaf" class="decorative-element leaf-3">
+        <img src="static/images/croos.png" alt="Cross" class="decorative-element cross">
+        <img src="static/images/triangle.png" alt="Triangle" class="decorative-element triangle">
+
+        <div class="teachers-container">
+            {% for teacher in teacher_profile %}
+            <div class="teacher-profile" data-index="{{ loop.index0 }}">
+                <img src="{{ teacher.image }}" alt="{{ teacher.alt_text }}">
+                <div class="teacher-info">
+                    <h3>{{ teacher.name }}</h3>
+                    <p>{{ teacher.bio }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        <a class="button-next button-right"><img src="static/images/buttonright.png"></a>
+    </div>
+</section>
+
+
+</section>
+
+
+<script>
+    let currentIndex = 0;
+    const itemsPerPage = 3;
+    const newsItems = document.querySelectorAll('.image-card');
+    const newsContainer = document.getElementById('news-container');
+    const totalNewsItems = newsItems.length;
+
+    function updateNewsDisplay() {
+        newsItems.forEach(item => item.style.display = 'none');
+
+        for (let i = currentIndex; i < currentIndex + itemsPerPage && i < totalNewsItems; i++) {
+            newsItems[i].style.display = 'block';
+        }
+    }
+
+    document.getElementById('next-button').addEventListener('click', () => {
+        if (currentIndex + itemsPerPage >= totalNewsItems) {
+            currentIndex = 0;
+        } else {
+            currentIndex += itemsPerPage; // Move to the next set of 3 items
+        }
+        updateNewsDisplay();
+    });
+
+    document.getElementById('prev-button').addEventListener('click', () => {
+        if (currentIndex - itemsPerPage < 0) {
+            currentIndex = totalNewsItems - itemsPerPage;
+        } else {
+            currentIndex -= itemsPerPage; // Move to the previous set of 3 items
+        }
+        updateNewsDisplay();
+    });
+
+    updateNewsDisplay();
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const profiles = document.querySelectorAll(".teacher-profile");
+        const nextButton = document.querySelector(".button-right");
+        const prevButton = document.querySelector(".button-left");
+
+        let currentIndex = 0;
+
+        // Function to show the active teacher
+        function showTeacher(index) {
+            profiles.forEach((profile, i) => {
+                profile.classList.toggle("active", i === index);
+            });
+        }
+
+        // Show the first teacher on load
+        showTeacher(currentIndex);
+
+        // Next button functionality
+        nextButton.addEventListener("click", () => {
+            currentIndex = (currentIndex + 1) % profiles.length;
+            showTeacher(currentIndex);
+        });
+
+        // Previous button functionality
+        prevButton.addEventListener("click", () => {
+            currentIndex = (currentIndex - 1 + profiles.length) % profiles.length;
+            showTeacher(currentIndex);
+        });
+    });
+</script>
+
+{% endblock %}

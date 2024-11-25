@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="news-container">
+    <h1 class="news-title">Новини</h1>
+    <div class="news-section">
+        {% for news in news_items %}
+        <div class="news-card">
+            <img src="{{ news.image }}" alt="{{ news.title }}">
+            <h2 class="news-text">{{ news.title }}</h2>
+            <p class="news-text-full">{{ news.description }}</p>
+                <a href="{{ url_for('news_detail', slug=news.slug) }}" class="button-more-news">{{ news.button_text }}</a>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

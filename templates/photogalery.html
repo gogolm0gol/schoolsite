@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="photo-gallery">
+    <h2>Фотогалерея</h2>
+    <div class="photo-grid">
+        {% for photo in photos %}
+        <div class="photo-card">
+            <img src="{{ photo.image_url }}" alt="{{ photo.title }}">
+            <div class="like-container">
+                <a href="#" class="like-button" data-photo-id="{{ photo.id }}">
+                    <img src="/static/images/like.png" alt="Like">
+                </a>
+                <span class="like-count" id="like-count-{{ photo.id }}">{{ photo.likes }}</span>
+            </div>
+        </div>
+        {% endfor %}
+
+    </div>
+</section>
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const likeButtons = document.querySelectorAll(".like-button");
+
+        likeButtons.forEach((button) => {
+            button.addEventListener("click", (event) => {
+                event.preventDefault();
+
+                const photoId = button.getAttribute("data-photo-id");
+
+                fetch(`/like/${photoId}`, {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        if (data.success) {
+                            const likeCount = document.getElementById(`like-count-${photoId}`);
+                            likeCount.textContent = data.likes;
+                        } else {
+                            alert("Failed to like the photo.");
+                        }
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+            });
+        });
+    });
+</script>
+
+{% endblock %}

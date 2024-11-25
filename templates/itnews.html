@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="part-news-container">
+    <h1 class="part-news-title">{{ news_item.title }}</h1>
+    <div class="part-news-main-image-container">
+        <img class="part-news-main-image" src="{{ news_item.image }}" alt="{{ news_item.title }}">
+    </div>
+    <div class="part-news-secondary-container">
+        <img class="part-news-secondary-image" src="{{ news_item.image_secondary }}" alt="{{ news_item.title }}">
+        <p class="part-news-content">{{ news_item.content}}</p>
+    </div>
+</div>
+{% endblock %}

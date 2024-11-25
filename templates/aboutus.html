@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% block content %}
+<!-- School Section-->
+<section id="introduction">
+    <div class="aboutus">
+        <h2>Наша Школа</h2>
+        <a href="{{ url_for('gallery') }}" class="button-more-aboutus">Більше</a>
+        <img src="static/images/arrowblue.png" class="arrow_aboutus" alt="Arrow">
+    </div>
+    <div class="intro-images">
+        <div class="intro-item large">
+            <img src="static/images/justformyla.jpg" alt="Chalkboard">
+        </div>
+        <div class="intro-item">
+            <img src="static/images/children.jpg" alt="Students">
+        </div>
+        <div class="intro-item">
+            <img src="static/images/schoolbuilding.jpg" alt="School Building">
+        </div>
+    </div>
+</section>
+
+<section id="subjects">
+    <h2 class="second_section_h2">У Нас Навчаються</h2>
+    <div class="subjects-grid">
+        <div class="subject-item">
+            <p><strong><span class="counter" data-target="323">0</span> Учнів</strong></p>
+            <p>1-4 Класів</p>
+        </div>
+        <div class="subject-item">
+            <p><strong><span class="counter" data-target="425">0</span> Учнів</strong></p>
+            <p>5-9 Класів</p>
+        </div>
+        <div class="subject-item">
+            <p><strong><span class="counter" data-target="112">0</span> Учнів</strong></p>
+            <p>10-11 Класів</p>
+        </div>
+    </div>
+</section>
+<section id="languages">
+    <h2>Мови Освітнього Процесу</h2>
+    <div class="languages-grid">
+        <div class="language-item">
+            <img src="static/images/ukraine.jpg" alt="Ukrainian Flag">
+            <div class="language-label">Українська Мова</div>
+        </div>
+        <div class="language-item">
+            <img src="static/images/english.jpg" alt="English Flag">
+            <div class="language-label">Англійська Мова</div>
+        </div>
+    </div>
+</section>
+<!-- Winners Section -->
+<section class="winners">
+    <h2>Наші Переможці</h2>
+    <a id="prev-button" class="carousel-button"><img src="static/images/whiteleft.png" alt="Previous"></a>
+    <div class="winners-carousel">
+        <div class="container-winners" id="winners-container">
+            {% for winner in winners %}
+            <div class="winner-card">
+                <img src="{{ winner.image }}" alt="{{ winner.name }}">
+                <p class="winner-name">{{ winner.name }}</p>
+                <p class="winner-description">{{ winner.description }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a id="next-button" class="carousel-button"><img src="static/images/whiteright.png" alt="Next"></a>
+</section>
+
+<section class="education-forms">
+    <h2>Форми Здобуття Освіти</h2>
+    <div class="education-content">
+        <div class="education-options">
+            <button class="education-button">Інституційна</button>
+            <button class="education-button">Індивідуальна</button>
+        </div>
+        <div class="education-image">
+            <img src="static/images/picture.png" alt="Education Illustration">
+        </div>
+    </div>
+</section>
+
+<section class="faq-section">
+    <div class="faq-header">
+        <h2 class="faq-title">Найчастіші Запитання</h2>
+        <a href="https://t.me/ovruch_school1_bot" class="button-more-faq">Запитайте нас</a>
+        <img src="static/images/arrowwhite.png" class="arrow_news" alt="arrow">
+    </div>
+
+    <div class="faq-item">
+        <button class="faq-question">
+            Як почати навчання за індивідуальною формою?
+            <img src="static/images/moreicon.png" alt="Toggle" class="toggle-icon">
+        </button>
+        <div class="faq-answer">
+            Будь-яка форма освіти, зокрема й індивідуальна, потребує, щоб учня зарахували до закладу – для цього
+            потрібно подати необхідні документи.</br>
+            Основний документ для зарахування або переведення на індивідуальну форму навчання – заява одного з батьків
+            дитини або самого учня, якщо він повнолітній. До заяви додаються документ, що посвідчує особу учня, медична
+            довідка № 086-1/о та документ про освіту, якщо він є.</br>
+            Можуть знадобитись і додаткові документи. Скажімо, необхідно буде документально підтвердити підстави для
+            навчання на екстернаті або обставини для застосування педагогічного патронажу (наприклад, стан здоров’я,
+            перебування під вартою або засудження, статус біженця). Іноземці та особи без громадянства додатково подають
+            копію документа, що підтверджує законність їх перебування в Україні. </br>
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            Чи можна поєднувати різні форми навчання?
+            <img src="static/images/moreicon.png" alt="Toggle" class="toggle-icon">
+        </button>
+        <div class="faq-answer">
+            Так, закон це передбачає. Таке поєднання має бути реалізовано через індивідуальний навчальний план, який
+            формують для учня в закладі освіти. Про поєднання різних форм навчання також варто одразу зазначати в заяві.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            Чи використовують щоденники в школі?
+            <img src="static/images/moreicon.png" alt="Toggle" class="toggle-icon">
+        </button>
+        <div class="faq-answer">
+            У школі використовуються електронні щоденники HIT, які дозволяють зручно відстежувати успішність учнів,
+            домашні завдання та розклад уроків. Це сучасний інструмент для спрощення комунікації між вчителями, учнями
+            та батьками.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            Як підготувати дитину до школи?
+            <img src="static/images/moreicon.png" alt="Toggle" class="toggle-icon">
+        </button>
+        <div class="faq-answer">
+            Найважливіше завдання родини — зняти страх дитини перед школою. Поясніть, що школа — це місце, де вона буде
+            щасливою та прийнятою. Розкажіть дитині про роль учителя як наставника, друга та помічника.</br>
+            Програвайте з дитиною ситуації привітання з учителями та однокласниками. Привчайте дитину до "шкільного"
+            розпорядку дня, включаючи зосереджену роботу за партою та перерви. Говоріть із дитиною про все довкола,
+            розвиваючи її мовлення та навички спілкування.</br>
+            Дитина має знати базову інформацію про себе, такі як ім’я, адреса та дату народження. Поясніть, що в школі
+            діють правила взаємоповаги, і їх потрібно дотримуватись. Перевірте побутові навички: зав’язування шнурків,
+            переодягання, складання речей. </br>
+            Напевно найбільший страх майбутнього першокласника — що поруч не буде мами. Тому про це варто говорити з
+            дитиною вже зараз: що школа — це дружнє середовище, там завжди можна попросити про допомогу вчителя, що
+            після уроків на тебе чекатиме мама чи тато.</br>
+            Отже підготовка до школи — це не лише розвиток знань і навичок, але й створення у дитини позитивного
+            уявлення про школу як місце радості, підтримки та нових можливостей.
+        </div>
+    </div>
+    <div class="faq-item">
+        <button class="faq-question">
+            Які документи необхідні для вступу до школи?
+            <img src="static/images/moreicon.png" alt="Toggle" class="toggle-icon">
+        </button>
+        <div class="faq-answer">
+            Для зарахування дитини до закладу освіти одним із її батьків чи повнолітньою особою, яка має намір здобувати
+            освіту, до закладу освіти подається заява, у якій зазначаються відомості про серію, номер (за наявності) та
+            дату видачі: </br>
+            свідоцтва про народження дитини або документа, що посвідчує особу повнолітнього вступника, який має намір
+            здобувати загальну середню освіту;</br>
+            медичної довідки за формою первинної облікової документації № 086/о «Медична довідка (витяг з медичної
+            картки амбулаторного хворого)», затвердженою наказом Міністерства охорони здоров’я України від 14 лютого
+            2012 року № 110, зареєстрованим в Міністерстві юстиції України 28 квітня 2012 року за № 661/20974 (у
+            редакції наказу Міністерства охорони здоров’я України від 25 липня 2023 року № 1351) (подається лише при
+            зарахуванні на очну (денну, вечірню) форми(у) або при поєднанні цієї форми з іншими формами здобуття повної
+            загальної середньої освіти);</br>
+            відповідного документа про наявний рівень освіти (за наявності).</br>
+        </div>
+    </div>
+</section>
+
+<script>
+    function animateCounters() {
+        const counters = document.querySelectorAll('.counter');
+        const speed = 100; // Adjust the speed of the count (lower is faster)
+
+        counters.forEach(counter => {
+            const updateCount = () => {
+                const target = +counter.getAttribute('data-target');
+                const count = +counter.innerText;
+                const increment = target / speed;
+
+                if (count < target) {
+                    counter.innerText = Math.ceil(count + increment);
+                    setTimeout(updateCount, 20);
+                } else {
+                    counter.innerText = target;
+                }
+            };
+
+            updateCount();
+        });
+    }
+
+    // Check if section is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top >= 0 &&
+            rect.left >= 0 &&
+            rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+            rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+        );
+    }
+
+    // Trigger counter animation on scroll
+    document.addEventListener('scroll', () => {
+        const subjectsSection = document.getElementById('subjects');
+        if (isInViewport(subjectsSection)) {
+            animateCounters();
+        }
+    });
+
+</script>
+<script>
+    let currentIndex = 0;
+    const itemsPerPage = 3;
+    const winnerItems = document.querySelectorAll('.winner-card');
+    const winnersContainer = document.getElementById('winners-container');
+    const totalWinnerItems = winnerItems.length;
+
+    function updateWinnersDisplay() {
+        // Hide all items initially
+        winnerItems.forEach(item => item.style.display = 'none');
+
+        // Show the next set of items
+        for (let i = currentIndex; i < currentIndex + itemsPerPage && i < totalWinnerItems; i++) {
+            winnerItems[i].style.display = 'block';
+        }
+    }
+
+    document.getElementById('next-button').addEventListener('click', () => {
+        if (currentIndex + itemsPerPage >= totalWinnerItems) {
+            currentIndex = 0; // Loop back to the first set if we're at the end
+        } else {
+            currentIndex += itemsPerPage; // Move to the next set of items
+        }
+        updateWinnersDisplay(); // Update the visible winner items
+    });
+
+    document.getElementById('prev-button').addEventListener('click', () => {
+        if (currentIndex - itemsPerPage < 0) {
+            currentIndex = totalWinnerItems - itemsPerPage;
+        } else {
+            currentIndex -= itemsPerPage;
+        }
+        updateWinnersDisplay();
+    });
+
+    updateWinnersDisplay();
+</script>
+<script>
+    document.querySelectorAll('.faq-question').forEach(button => {
+    button.addEventListener('click', () => {
+        const answer = button.nextElementSibling;
+        const icon = button.querySelector('.toggle-icon');
+
+        // Toggle visibility of the answer
+        if (answer.style.display === 'block') {
+            answer.style.display = 'none';
+            icon.style.transform = 'rotate(0deg)';
+        } else {
+            answer.style.display = 'block';
+            icon.style.transform = 'rotate(180deg)';
+        }
+    });
+});
+</script>
+{% endblock %}

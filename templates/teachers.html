@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% block content %}
+<section class="teachers-section">
+    <h2 class="teacher-title">Наші Вчителі</h2>
+    <img src="static/images/leaf.png" alt="Leaf" class="decorative-element leaf-10">
+    <img src="static/images/leaf2.png" alt="Leaf" class="decorative-element leaf-11">
+    <img src="static/images/leaf3.png" alt="Leaf" class="decorative-element leaf-12">
+    <img src="static/images/croos.png" alt="Cross" class="decorative-element cross4">
+    <img src="static/images/triangle.png" alt="Triangle" class="decorative-element triangle4">
+    <img src="static/images/leaf.png" alt="Leaf" class="decorative-element leaf-4">
+    <img src="static/images/leaf2.png" alt="Leaf" class="decorative-element leaf-5">
+    <img src="static/images/leaf3.png" alt="Leaf" class="decorative-element leaf-6">
+    <img src="static/images/croos.png" alt="Cross" class="decorative-element cross2">
+    <img src="static/images/triangle.png" alt="Triangle" class="decorative-element triangle2">
+    <img src="static/images/leaf.png" alt="Leaf" class="decorative-element leaf-7">
+    <img src="static/images/leaf2.png" alt="Leaf" class="decorative-element leaf-8">
+    <img src="static/images/leaf3.png" alt="Leaf" class="decorative-element leaf-9">
+    <img src="static/images/croos.png" alt="Cross" class="decorative-element cross3">
+    <img src="static/images/triangle.png" alt="Triangle" class="decorative-element triangle3">
+    <div class="teachers-page">
+        {% for teacher in teachers %}
+        <div class="teacher-card">
+            <img src="{{ url_for('static', filename=teacher.image.split('static/', 1)[1]) }}"
+                 alt="{{ teacher.alt_text }}" class="teacher-image">
+            <div class="teacher-info">
+                <h2>{{ teacher.name }}</h2>
+                <p>{{ teacher.bio }}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if current_page > 1 %}
+        <a href="{{ url_for('teachers', page=current_page-1) }}" class="pagination prev"><img src="static/images/buttonleft.png"></a>
+        {% endif %}
+
+        {% if current_page < total_pages %}
+        <a href="{{ url_for('teachers', page=current_page+1) }}" class="pagination next"><img src="static/images/buttonright.png"></a>
+        {% endif %}
+    </div>
+</section>
+{% endblock %}
