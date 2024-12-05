@@ -33,15 +33,13 @@
     </div>
 </section>
 
-<!-- Teachers Section -->
-<section class="teachers">
-    <a class="button-next button-left"><img src="static/images/buttonleft.png"></a>
+<!-- Events Section -->
+<section class="events">
+    <a class="button-next button-left"><img src="static/images/buttonleft.png" alt="Previous"></a>
 
-    <div class="teachers-container">
-        <div class="teachers-header">
-            <h2>Наші Вчителі</h2>
-            <a href="{{ url_for('teachers') }}" class="button-more-teacher">Більше</a>
-            <img src="static/images/arrowblue.png" class="arrow_teacher">
+    <div class="events-container">
+        <div class="events-header">
+            <h2>Наші Події</h2>
         </div>
         <!-- Decorative elements -->
         <img src="static/images/leaf.png" alt="Leaf" class="decorative-element leaf-1">
@@ -50,19 +48,19 @@
         <img src="static/images/croos.png" alt="Cross" class="decorative-element cross">
         <img src="static/images/triangle.png" alt="Triangle" class="decorative-element triangle">
 
-        <div class="teachers-container">
-            {% for teacher in teacher_profile %}
-            <div class="teacher-profile" data-index="{{ loop.index0 }}">
-                <img src="{{ teacher.image }}" alt="{{ teacher.alt_text }}">
-                <div class="teacher-info">
-                    <h3>{{ teacher.name }}</h3>
-                    <p>{{ teacher.bio }}</p>
+        <div class="events-slider">
+            {% for event in events_list %}
+            <div class="event-item" data-index="{{ loop.index0 }}">
+                <img src="{{ event.image }}" alt="{{ event.alt_text }}">
+                <div class="event-info">
+                    <h3>{{ event.title }}</h3>
+                    <p>{{ event.description }}</p>
                 </div>
             </div>
             {% endfor %}
         </div>
 
-        <a class="button-next button-right"><img src="static/images/buttonright.png"></a>
+        <a class="button-next button-right"><img src="static/images/buttonright.png" alt="Next"></a>
     </div>
 </section>
 
@@ -107,34 +105,35 @@
 </script>
 <script>
     document.addEventListener("DOMContentLoaded", function () {
-        const profiles = document.querySelectorAll(".teacher-profile");
+        const events = document.querySelectorAll(".event-item");
         const nextButton = document.querySelector(".button-right");
         const prevButton = document.querySelector(".button-left");
 
         let currentIndex = 0;
 
-        // Function to show the active teacher
-        function showTeacher(index) {
-            profiles.forEach((profile, i) => {
-                profile.classList.toggle("active", i === index);
+        // Function to show the active event
+        function showEvent(index) {
+            events.forEach((event, i) => {
+                event.classList.toggle("active", i === index);
             });
         }
 
-        // Show the first teacher on load
-        showTeacher(currentIndex);
+        // Show the first event on load
+        showEvent(currentIndex);
 
         // Next button functionality
         nextButton.addEventListener("click", () => {
-            currentIndex = (currentIndex + 1) % profiles.length;
-            showTeacher(currentIndex);
+            currentIndex = (currentIndex + 1) % events.length;
+            showEvent(currentIndex);
         });
 
         // Previous button functionality
         prevButton.addEventListener("click", () => {
-            currentIndex = (currentIndex - 1 + profiles.length) % profiles.length;
-            showTeacher(currentIndex);
+            currentIndex = (currentIndex - 1 + events.length) % events.length;
+            showEvent(currentIndex);
         });
     });
 </script>
+
 
 {% endblock %}

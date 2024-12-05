@@ -21,6 +21,7 @@
 <header>
     <div class="logo">
         <a href="{{ url_for('index') }}"><img src="/static/images/logo.png" alt="Logo" class="logoheader"></a>
+        <p class="logotitle">Овруцький ліцей №1</p>
     </div>
     <nav>
         <ul>
@@ -28,7 +29,8 @@
             <li><a href="{{ url_for('aboutus') }}">Про нас</a></li>
             <li><a href="{{ url_for('news') }}">Новини</a></li>
             <li><a href="{{ url_for('teachers') }}">Вчителі</a></li>
-            <li><a href="https://t.me/ovruch_school1_bot">Контакти</a></li>
+            <li><a href="{{ url_for('contacts') }}">Контакти</a></li>
+
         </ul>
     </nav>
 </header>
@@ -42,7 +44,8 @@
                 <li><a href="{{ url_for('aboutus') }}">Про нас</a></li>
                 <li><a href="{{ url_for('news') }}">Новини</a></li>
                 <li><a href="{{ url_for('teachers') }}">Вчителі</a></li>
-                <li><a href="https://t.me/ovruch_school1_bot">Контакти</a></li>
+                <li><a href="{{ url_for('contacts') }}">Контакти</a></li>
+
             </ul>
         </nav>
         <div class="footer-logo">

@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div id="main">
+    <form name="test" onsubmit="return false;">
+        <h1 class="test-title">Історичний Тест</h1>
+
+        <div class="question">
+            <h3 class="question-title">1. Яким роком датується перша згадка про наш заклад освіти?</h3>
+            <p><label class="option"><input name="q1" type="radio"> 1930</label></p>
+            <p><label class="option"><input name="q1" type="radio"> 1945</label></p>
+            <p><label class="option"><input name="q1" type="radio"> 1923</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">2. Хто з відомих українців в свій час працював у закладі?</h3>
+            <p><label class="option"><input name="q2" type="radio"> Василь Сухомлинський</label></p>
+            <p><label class="option"><input name="q2" type="radio"> Андрій Малишко</label></p>
+            <p><label class="option"><input name="q2" type="radio"> Василь Стус</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">3. Хто є директором нашого закладу в даний час?</h3>
+            <p><label class="option"><input name="q3" type="radio"> Невмержицька Наталія Миколаївна</label></p>
+            <p><label class="option"><input name="q3" type="radio"> Бондаренко Сергій Дмитрович</label></p>
+            <p><label class="option"><input name="q3" type="radio"> Невмержицький Анатолій Олексійович</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">4. Скільки учнів навчається в ліцеї станом на 1.09.2024?</h3>
+            <p><label class="option"><input name="q4" type="radio"> 863</label></p>
+            <p><label class="option"><input name="q4" type="radio"> 803</label></p>
+            <p><label class="option"><input name="q4" type="radio"> 955</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">5. Скільки вчителів працює в ліцеї на даний час?</h3>
+            <p><label class="option"><input name="q5" type="radio"> 80</label></p>
+            <p><label class="option"><input name="q5" type="radio"> 85</label></p>
+            <p><label class="option"><input name="q5" type="radio"> 90</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">6. На якій вулиці знаходиться ліцей?</h3>
+            <p><label class="option"><input name="q6" type="radio"> Івана Франка</label></p>
+            <p><label class="option"><input name="q6" type="radio"> Івана Богуна</label></p>
+            <p><label class="option"><input name="q6" type="radio"> Тараса Шевченка</label></p>
+        </div>
+
+        <div class="question">
+            <h3 class="question-title">7. О котрій годині розпочинаються заняття у нашому ліцеї?</h3>
+            <p><label class="option"><input name="q7" type="radio"> 8.20</label></p>
+            <p><label class="option"><input name="q7" type="radio"> 8.30</label></p>
+            <p><label class="option"><input name="q7" type="radio"> 9.00</label></p>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="calculateScore(this.form)">Перевірити</button>
+        <p><input type="text" name="display" class="result-display" readonly></p>
+    </form>
+</div>
+<script>
+    function calculateScore(form) {
+        let counter = 0;
+        const answers = [
+            form.q1[0], // 1930
+            form.q2[1], // Андрій Малишко
+            form.q3[0], // Невмержицький Анатолій Олексійович
+            form.q4[1], // 803
+            form.q5[1], // 85
+            form.q6[1], // Івана Богуна
+            form.q7[0]  // 8.30
+        ];
+        answers.forEach(answer => {
+            if (answer.checked) counter++;
+        });
+        form.display.value = `Ваш результат: ${counter} з ${answers.length}`;
+    }
+</script>
+
+{% endblock %}

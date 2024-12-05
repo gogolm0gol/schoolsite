@@ -152,6 +152,41 @@ winners = [
     }
 ]
 
+events_list = [
+    {
+        "title": "Прикрасимо ялинку",
+        "image": "static/images/christmasstree.jpg",
+        "alt_text": "Прикрасимо ялинку",
+        "description": """5 грудня в холі школи відбудеться прикрашання ялинки, де учні разом з вчителями створять святкову атмосферу. Це буде чудова можливість для всіх долучитися до зимових традицій та підготуватися до новорічних свят.""",
+    },
+    {
+        "title": "Літературний конкурс",
+        "image": "static/images/books.jpg",
+        "alt_text": "Літературний конкурс",
+        "description": """Запрошуємо учнів до участі в літературному конкурсі, де кожен може поділитися своєю творчістю. Учасники можуть написати вірші, есе чи оповідання на задану тему. Найкращі твори будуть опубліковані в шкільному журналі.
+        Прийди та поділись своїм талантом!""",
+    },
+    {
+        "title": "Квест з інформатики",
+        "image": "static/images/inform.jpg",
+        "alt_text": "Квест з інформатики",
+        "description": """Запрошуємо всіх учнів на захоплюючий квест з інформатики! Вам потрібно буде розв’язувати задачі, пов'язані з програмуванням, алгоритмами та логікою, щоб знайти захований скарб. Це чудова можливість не тільки перевірити свої навички, а й весело провести час.
+        Регистрируйся та бери участь у квесті!""",
+    },
+    {
+        "title": "Футбольний матч",
+        "image": "static/images/sport.jpg",
+        "alt_text": "Футбольний матч",
+        "description": """18 грудня відбудеться захоплюючий футбольний матч, у якому учні змагатимуться за першість. Це буде чудова можливість підтримати команду та насолодитися спортивною атмосферою перед зимовими канікулами.""",
+    },
+    {
+        "title": "16 днів проти насильства",
+        "image": "static/images/bullying.jpg",
+        "alt_text": "16 днів проти насильства",
+        "description": """25.11 стартує щорічна всеукраїнська акція "16 днів проти насильства" """,
+    },
+]
+
 
 def get_photos():
     conn = sqlite3.connect("gallery.db")
@@ -177,7 +212,7 @@ def update_likes(photo_id):
 
 @app.route('/')
 def index():
-    return render_template('index.html', news_items=news_items, teacher_profile=teacher_profile)
+    return render_template('index.html', news_items=news_items, events_list=events_list)
 
 
 @app.route("/gallery")
@@ -198,6 +233,16 @@ def like_photo(photo_id):
 @app.route('/news')
 def news():
     return render_template('news.html', news_items=news_items)
+
+
+@app.route('/test')
+def test():
+    return render_template('test.html')
+
+
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html')
 
 
 @app.route('/news/<slug>')
