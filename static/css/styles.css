@@ -958,11 +958,7 @@ margin-top: 100px;
     font-size: 18px;
     color: #f5f5f5;
 }
-.fqlink {
-    font-size: 18px;
-    color: #f5f5f5;
-    text-decoration:none;
-}
+
 .button-more-faq {
     display: flex;
     align-items: center;
@@ -1428,4 +1424,52 @@ margin-top: 100px;
         font-size: 0.9em;
         padding: 8px 16px;
     }
+}
+/* Test Section */
+#test {
+    padding: 50px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.test-section-title {
+    font-size: 48px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    color: #281B53;
+    text-align: center;
+}
+
+.test-button-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.test-button {
+    color: #f5f5f5;
+    font-size: 24px;
+    background-image: url('/static/images/background.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px 100px;
+    border-radius: 56px;
+    text-decoration: none;
+    font-weight: 400;
+    margin-right: 135px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.test-button:hover {
+    transform: scale(1.05);
+    background-color: #3d2975;
+}
+
+.test-button:active {
+    transform: scale(1);
 }

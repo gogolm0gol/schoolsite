@@ -33,6 +33,7 @@
     </div>
 </section>
 
+
 <!-- Events Section -->
 <section class="events">
     <a class="button-next button-left"><img src="static/images/buttonleft.png" alt="Previous"></a>
@@ -63,10 +64,13 @@
         <a class="button-next button-right"><img src="static/images/buttonright.png" alt="Next"></a>
     </div>
 </section>
-
-
+<!--- Test Section -->
+<section id="test">
+    <h2 class="test-section-title">Оцініть свої знання нашої школи</h2>
+    <div class="test-button-wrapper">
+        <a class="test-button" href="{{ url_for('test') }}">Тест</a>
+    </div>
 </section>
-
 
 <script>
     let currentIndex = 0;
